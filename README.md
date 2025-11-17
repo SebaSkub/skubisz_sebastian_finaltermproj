@@ -42,10 +42,11 @@ The dataset `waterQuality1.csv` includes data for water quality classification. 
 ---
 
 ## 3) Environment Setup
-Use **Python 3.9–3.12**
+Use **Python 3.9–3.13**
 
 ### 🪟 Windows PowerShell
 ```bash
+Install python from Windows Store 3.13
 python -m venv .venv
 .venv\Scriptsctivate
 pip install --upgrade pip
@@ -54,6 +55,7 @@ pip install -r requirements.txt
 
 ### 🐧 macOS/Linux
 ```bash
+sudo apt install python3.13
 python3 -m venv .venv
 source .venv/bin/activate
 pip install --upgrade pip
@@ -76,7 +78,7 @@ imblearn
 
 Run the main script interactively from the project root:
 ```bash
-python water_quality_classification.py
+python training.py
 ```
 
 The script will:
