@@ -18,7 +18,7 @@ water_quality_classification/
 │   ├─ RandomForest/
 │   ├─ LSTM/
 │
-├─ water_quality_classification.py         # main script
+├─ training.py         # main script
 ├─ README.md                              # this file
 └─ requirements.txt                       # dependencies
 ```
