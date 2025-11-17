@@ -6,7 +6,7 @@
 
 ## 1) Folder Layout
 ```
-water_quality_classification/
+skubisz_sebastian_finaltermproj/
 │
 ├─ training.py                          # main script
 ├─ datasets/                            # input dataset
@@ -77,19 +77,12 @@ python training.py
 ```
 
 ### Example Session
-```
-Choose a dataset:
-  1. Water Quality
-Enter number (1): 1
-Minimum support (1–100 or 0..1) [20]: 40
-Minimum confidence (1–100 or 0..1) [50]: 60
-```
 
 The script will:
 
 - Run **KNN**, **Random Forest**, and **LSTM**
 - Print evaluation metrics such as accuracy, precision, recall, F1 score, and more
-- Save all results and plots in the `images/` directory
+- Save all results and plots in the folder
 
 ---
 
@@ -97,7 +90,7 @@ The script will:
 
 All results and images are automatically saved to:
 ```
-images/
+skubisz_sebastian_finaltermproj/
 ├─ class_distribution_full.png
 ├─ correlation_heatmap.png
 ├─ feature_histograms.png
