@@ -1,7 +1,5 @@
-# skubisz_sebastian_finaltermproj
-CS634 Final Project
 
-# Water Quality Classification - Final Project  
+# Water Quality Classification Project  
 **Author:** Sebastian Skubisz  
 
 ---
@@ -10,39 +8,34 @@ CS634 Final Project
 ```
 water_quality_classification/
 │
-├─ datasets/                              # input CSV files
-│   ├─ waterQuality1.csv
-│
-├─ outputs/                               # algorithm results
-│   ├─ KNN/
-│   ├─ RandomForest/
-│   ├─ LSTM/
-│
-├─ training.py         # main script
-├─ README.md                              # this file
-└─ requirements.txt                       # dependencies
+├─ training.py                          # main script
+├─ datasets/                            # input dataset
+│   └─ waterQuality1.csv                # the dataset file
+├─ images/                              # output images
+│   ├─ class_distribution_full.png      # Class distribution plot
+│   ├─ correlation_heatmap.png          # Correlation heatmap plot
+│   ├─ feature_histograms.png           # Feature histograms plot
+│   ├─ pairplot_is_safe.png             # Pairplot of features
+│   ├─ smote_class_balance.png          # SMOTE class balance plot
+│   ├─ roc_knn.png                      # KNN ROC curve plot
+│   ├─ roc_rf.png                       # Random Forest ROC curve plot
+│   └─ roc_lstm.png                     # LSTM ROC curve plot
+├─ requirements.txt                    # dependencies
+└─ README.md                            # this file
 ```
-
-### Why this layout?  
-All datasets are stored under `datasets/`. The main script processes the dataset and generates model evaluation results inside the `outputs/` folder. This layout ensures everything stays organized.
 
 ---
 
-## 2) Dataset (Input Format)
-The dataset `waterQuality1.csv` includes data for water quality classification. The structure is as follows:
+## 2) Dataset
+The dataset used is the **Water Quality dataset**, which is created from imaginary data of water quality in an urban environment. The dataset contains 21 columns and 8000 rows.
 
-| Column         | Type  | Description |
-|----------------|-------|-------------|
-| aluminium      | float | Amount of aluminium in water |
-| ammonia        | float | Ammonia concentration |
-| arsenic        | float | Arsenic concentration |
-| ...            | ...   | ... |
-| is_safe        | int   | Target variable (1 for safe, 0 for unsafe) |
+Dataset source: [Water Quality Dataset - Kaggle](https://www.kaggle.com/datasets/mssmartypants/water-quality)  
 
 ---
 
 ## 3) Environment Setup
-Use **Python 3.9–3.13**
+
+Use **Python 3.9–3.13**.
 
 ### 🪟 Windows PowerShell
 ```bash
@@ -65,80 +58,80 @@ pip install -r requirements.txt
 ### requirements.txt
 ```
 pandas
-seaborn
+numpy
 matplotlib
-scikit-learn
-keras
+seaborn
+sklearn
 imblearn
+keras
+tensorflow
 ```
 
 ---
 
-## 4) How to Run (CLI)
+## 4) How to Run
 
 Run the main script interactively from the project root:
 ```bash
 python training.py
 ```
 
+### Example Session
+```
+Choose a dataset:
+  1. Water Quality
+Enter number (1): 1
+Minimum support (1–100 or 0..1) [20]: 40
+Minimum confidence (1–100 or 0..1) [50]: 60
+```
+
 The script will:
 
-- Load the dataset
-- Preprocess the data (handle missing values, normalize features)
-- Train three models: **KNN**, **Random Forest**, and **LSTM**.
-- Evaluate models using confusion matrix, AUC, and other metrics
-- Plot and save ROC curves and other evaluation results
-
-### Example Output
-```
-===== KNN =====
-AUC: 0.88
-
-===== Random Forest =====
-AUC: 0.92
-
-===== LSTM =====
-AUC: 0.94
-```
+- Run **KNN**, **Random Forest**, and **LSTM**
+- Print evaluation metrics such as accuracy, precision, recall, F1 score, and more
+- Save all results and plots in the `images/` directory
 
 ---
 
-## 5) Example Output
+## 5) Output Structure
 
-The following evaluation results are stored in the `outputs/` folder:
-
+All results and images are automatically saved to:
 ```
-outputs/
-├─ KNN/
-│  ├─ confusion_matrix.png
-│  └─ roc_curve.png
-├─ RandomForest/
-│  ├─ confusion_matrix.png
-│  └─ roc_curve.png
-├─ LSTM/
-│  ├─ confusion_matrix.png
-│  └─ roc_curve.png
+images/
+├─ class_distribution_full.png
+├─ correlation_heatmap.png
+├─ feature_histograms.png
+├─ pairplot_is_safe.png
+├─ smote_class_balance.png
+├─ roc_knn.png
+├─ roc_rf.png
+└─ roc_lstm.png
 ```
 
 ---
 
-## 6) Defensive Validation
-- Detects missing or invalid datasets
-- Re-prompts if support/confidence ≤ 0  
-- Handles multiple CSV structures and separators gracefully
+## 6) Running the Script
+The script processes the `waterQuality1.csv` dataset, applies SMOTE for class balancing, trains models using **KNN**, **Random Forest**, and **LSTM**, and then evaluates the models based on various metrics. It also plots ROC curves to compare model performance.
 
 ---
 
-## 7) Key Concepts (Summary)
-- **Binary Classification**: Classifying water as "safe" or "unsafe" based on various water quality parameters.
-- **Evaluation Metrics**: Confusion matrix, accuracy, precision, recall, F1 score, and AUC.
-
-| Algorithm     | Description | Strengths | Weaknesses |
-|---------------|-------------|-----------|------------|
-| **KNN**       | Instance-based classifier | Simple, interpretable | Computationally expensive for large datasets |
-| **RandomForest** | Ensemble model with decision trees | Robust to overfitting, handles imbalance well | Less interpretable |
-| **LSTM**      | Deep learning model | Good for sequential data | Requires large dataset and computational power |
+## 7) Challenges Encountered
+- **Imbalanced Dataset**: Used SMOTE to balance the class distribution.
+- **Missing/Invalid Data**: Implemented data preprocessing steps to handle missing values and outliers.
+- **Model Hyperparameters**: Fine-tuned KNN and Random Forest models using GridSearchCV for optimal performance.
 
 ---
 
-**End of README**  
+## 8) Key Concepts
+### Random Forest
+A versatile machine learning algorithm that combines multiple decision trees to improve prediction accuracy.
+
+### LSTM (Long Short-Term Memory)
+A type of recurrent neural network (RNN) ideal for sequence prediction tasks, used here to capture temporal relationships in the data.
+
+### KNN (K-Nearest Neighbors)
+A simple, instance-based learning algorithm used for classification tasks based on proximity.
+
+---
+
+**End of README**
