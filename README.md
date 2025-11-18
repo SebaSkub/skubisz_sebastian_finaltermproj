@@ -41,7 +41,7 @@ Use **Python 3.9–3.13**.
 ```bash
 Install python from Windows Store 3.13
 python -m venv .venv
-.venv\Scriptsctivate
+.venv\Scripts\activate
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
